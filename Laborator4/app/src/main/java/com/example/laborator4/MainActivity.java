@@ -12,11 +12,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int CERERE_ADAUGARE_MAPA = 10;
+    private static final int CERERE_LISTA_MAPE = 20;
 
     private TextView tvRezultat;
+    private ArrayList<Mapa> listaMape;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
                 });
 
         tvRezultat = findViewById(R.id.tvRezultat);
+        listaMape = new ArrayList<>();
 
         Button btnAdaugaMapa = findViewById(R.id.btnAdaugaMapa);
+        Button btnVeziMape = findViewById(R.id.btnVeziMape);
 
         btnAdaugaMapa.setOnClickListener(v -> {
             Intent intent = new Intent(
@@ -44,6 +50,17 @@ public class MainActivity extends AppCompatActivity {
             );
 
             startActivityForResult(intent, CERERE_ADAUGARE_MAPA);
+        });
+
+        btnVeziMape.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    ListaMapeActivity.class
+            );
+
+            intent.putExtra("listaMape", listaMape);
+
+            startActivityForResult(intent, CERERE_LISTA_MAPE);
         });
     }
 
@@ -70,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
                         date.getBoolean("impermeabila")
                 );
 
-                tvRezultat.setText(mapa.toString());
+                listaMape.add(mapa);
+                afiseazaUltimaMapa();
 
                 Toast.makeText(
                         this,
@@ -79,6 +97,35 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG
                 ).show();
             }
+        }
+
+        if (requestCode == CERERE_LISTA_MAPE
+                && resultCode == RESULT_OK
+                && data != null) {
+
+            ArrayList<Mapa> listaActualizata =
+                    (ArrayList<Mapa>) data.getSerializableExtra(
+                            "listaMape"
+                    );
+
+            if (listaActualizata != null) {
+                listaMape = listaActualizata;
+                afiseazaUltimaMapa();
+            }
+        }
+    }
+
+    private void afiseazaUltimaMapa() {
+        if (listaMape.isEmpty()) {
+            tvRezultat.setText(
+                    "Încă nu ai adăugat nicio mapă."
+            );
+        } else {
+            Mapa ultimaMapa = listaMape.get(
+                    listaMape.size() - 1
+            );
+
+            tvRezultat.setText(ultimaMapa.toString());
         }
     }
 }

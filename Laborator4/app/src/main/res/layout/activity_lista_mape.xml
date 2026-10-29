@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F5FF"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toate mapele"
+        android:textColor="#45246B"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Apasă o mapă pentru detalii. Ține apăsat pentru ștergere."
+        android:textColor="#625B71"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvGol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Încă nu ai adăugat nicio mapă."
+        android:textColor="#49454F"
+        android:textSize="16sp" />
+
+    <ListView
+        android:id="@+id/lvMape"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:divider="#D8C9E8"
+        android:dividerHeight="1dp" />
+
+</LinearLayout>

@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:text="Adaugă și vezi detaliile unei mape."
+        android:text="Adaugă, vezi sau șterge mapele tale."
         android:textColor="#625B71"
         android:textSize="16sp" />
 
@@ -29,6 +29,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Adaugă o mapă" />
+
+    <Button
+        android:id="@+id/btnVeziMape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Vezi toate mapele" />
 
     <LinearLayout
         android:layout_width="match_parent"

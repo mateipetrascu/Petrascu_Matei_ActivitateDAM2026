@@ -1,6 +1,8 @@
 package com.example.laborator4;
 
-public class Mapa {
+import java.io.Serializable;
+
+public class Mapa implements Serializable {
 
     private String denumire;
     private int numarFoi;
@@ -55,11 +57,12 @@ public class Mapa {
     @Override
     public String toString() {
         return "MAPA: " + denumire
-                + "\nNumar foi: " + numarFoi
+                + "\nNumăr foi: " + numarFoi
                 + "\nAre buzunar: " + (areBuzunar ? "Da" : "Nu")
                 + "\nCuloare: " + culoare
                 + "\nMaterial: " + material
-                + "\nImportanta: " + importanta + "/5"
-                + "\nImpermeabila: " + (impermeabila ? "Da" : "Nu");
+                + "\nImportanță: " + importanta + "/5"
+                + "\nImpermeabilă: "
+                + (impermeabila ? "Da" : "Nu");
     }
 }
